@@ -411,6 +411,156 @@
       "}"
 
     ]
+  },
+  {
+    "title": "目标伪类选择器",
+    "src": "TipSelect",
+    "pointer": [
+      "多选按钮",
+      "单击右侧进行测试"
+    ],
+    "codeShow": [
+      "computed: {",
+      "filterCheckValues: function () {",
+      "var value = this.checkValues;",
+      "var reValue = '';",
+      "for (var i = 0; i < value.length; i++) {",
+      "reValue += value[i] + '、'",
+      "}",
+      "reValue = reValue.substring(0, reValue.length - 1)",
+      "return reValue;",
+      "}",
+      "},",
+      "methods: {",
+      "initData: function () {",
+      "var self = this;",
+      "self.items = this.itemData;",
+      " if (itemData.length != 0) {",
+
+      "}," ,
+      "}"
+
+    ]
+  },
+  {
+    "title": "正方体动画",
+    "src": "ZhenAnimate",
+    "pointer": [
+      "多选按钮",
+      "单击右侧进行测试"
+    ],
+    "codeShow": [
+      "computed: {",
+      "filterCheckValues: function () {",
+      "var value = this.checkValues;",
+      "var reValue = '';",
+      "for (var i = 0; i < value.length; i++) {",
+      "reValue += value[i] + '、'",
+      "}",
+      "reValue = reValue.substring(0, reValue.length - 1)",
+      "return reValue;",
+      "}",
+      "},",
+      "methods: {",
+      "initData: function () {",
+      "var self = this;",
+      "self.items = this.itemData;",
+      " if (itemData.length != 0) {",
+
+      "}," ,
+      "}"
+
+    ]
+  },
+  {
+    "title": "文本图片效果",
+    "src": "TextPic",
+    "pointer": [
+      "多选按钮",
+      "单击右侧进行测试"
+    ],
+    "codeShow": [
+      "computed: {",
+      "filterCheckValues: function () {",
+      "var value = this.checkValues;",
+      "var reValue = '';",
+      "for (var i = 0; i < value.length; i++) {",
+      "reValue += value[i] + '、'",
+      "}",
+      "reValue = reValue.substring(0, reValue.length - 1)",
+      "return reValue;",
+      "}",
+      "},",
+      "methods: {",
+      "initData: function () {",
+      "var self = this;",
+      "self.items = this.itemData;",
+      " if (itemData.length != 0) {",
+
+      "}," ,
+      "}"
+
+    ]
+  },
+  {
+    "title": "折扇效果",
+    "src": "ZheShan",
+    "pointer": [
+      "多选按钮",
+      "单击右侧进行测试"
+    ],
+    "codeShow": [
+      "computed: {",
+      "filterCheckValues: function () {",
+      "var value = this.checkValues;",
+      "var reValue = '';",
+      "for (var i = 0; i < value.length; i++) {",
+      "reValue += value[i] + '、'",
+      "}",
+      "reValue = reValue.substring(0, reValue.length - 1)",
+      "return reValue;",
+      "}",
+      "},",
+      "methods: {",
+      "initData: function () {",
+      "var self = this;",
+      "self.items = this.itemData;",
+      " if (itemData.length != 0) {",
+
+      "}," ,
+      "}"
+
+    ]
+  },
+  {
+    "title": "汽车旋转",
+    "src": "CarZhuan",
+    "pointer": [
+      "多选按钮",
+      "单击右侧进行测试"
+    ],
+    "codeShow": [
+      "computed: {",
+      "filterCheckValues: function () {",
+      "var value = this.checkValues;",
+      "var reValue = '';",
+      "for (var i = 0; i < value.length; i++) {",
+      "reValue += value[i] + '、'",
+      "}",
+      "reValue = reValue.substring(0, reValue.length - 1)",
+      "return reValue;",
+      "}",
+      "},",
+      "methods: {",
+      "initData: function () {",
+      "var self = this;",
+      "self.items = this.itemData;",
+      " if (itemData.length != 0) {",
+
+      "}," ,
+      "}"
+
+    ]
   }
 
 ]

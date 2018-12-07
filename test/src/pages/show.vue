@@ -2,7 +2,7 @@
     <div class="showBox">
       <header-component></header-component>
       <div class="section">
-        <menu-component :menuinfo="menuinfo" :clicks="changeSrc"></menu-component>
+        <menu-component :menuinfo="menuinfo" :clicks="changeSrc" id="colorBox"></menu-component>
         <con-component :idxs="ind" :coninfo = "menuinfo"></con-component>
         <right-component :parentmethods="changeSrc" :idxs="ind" :rightinfo="menuinfo"></right-component>
       </div>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+   import $ from "jquery"
     import HeaderComponent from "../components/HeaderComponent";
     import MenuComponent from "../components/MenuComponent";
     import ConComponent from "../components/ConComponent";
@@ -34,9 +35,31 @@
       },
       methods:{
           changeSrc(i){
+            console.log($("li a").eq(i))
             this.ind = i
+            if(i>0) {
+              $("li a").css({"color": ""})
+              $("li a").eq(i).css({"color": "red"})
+            }
             console.info(i)
-          }
+          },
+
+        toCenter(){
+            $(".rightBox").addEventListener("mousedown",()=>{
+              $(".showBox").css({
+                "position":"relative",
+                "top":"70px",
+                "left":"calc(- (50% - 50px))"
+              })
+              $(".conBox").css({
+                display:"none"
+              })
+              $(".leftBox").css({
+                display:"none"
+              })
+            })
+        }
+
       },
       created(){
         fetch("/static/data.json").then(res=>{

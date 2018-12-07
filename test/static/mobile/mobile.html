@@ -34,18 +34,24 @@
 
 
 <script>
-
   //==========
   /**
    * 子目录
    */
-  let subCategory = {
-    template: `<div class="mobile_nav_sub mobile_nav_war" @click="jumpPage"><span class="mobile_nav_span">{{module.name}}</span><span class="mobile_nav_span"><i class="iconfont icon-you"></i></span></div>`,
-    props: ["module"],
+  var subCategory = {
+    template: `<div class="mobile_nav_sub mobile_nav_war" @click="jumpPage(i+1,mName)"><span class="mobile_nav_span">{{module.name}}</span><span class="mobile_nav_span"><i class="iconfont icon-you"></i></span></div>`,
+    props: ["module","i","mName","aInfo"],
     methods: {
-      jumpPage() {
-
-        this.$router.push("/" + this.module.path);
+      jumpPage(n,x) {
+        if(x == "App 页面"){
+          window.localStorage.name = n + this.aInfo[0].moduless.length;
+          window.localStorage.module = x;
+          this.$router.push("/" + this.module.path);
+        }else{
+          window.localStorage.name = n;
+          window.localStorage.module = x;
+          this.$router.push("/" + this.module.path);
+        }
       }
     },
   };
@@ -63,7 +69,7 @@
           <i :class="'iconfont '+ iconame"></i>
           </span>
       </div>
-      <subCategory v-if="iSshow" v-for="(u,idx) in info.moduless" :module="u" :key="idx"></subCategory>
+      <subCategory v-if="iSshow" v-for="(u,idx) in info.moduless" :module="u" :key="idx" :i="idx" :mName="moduleName" :aInfo="allInfo"></subCategory>
     </div>`,
     data() {
       return {
@@ -71,7 +77,7 @@
         iconame: "icon-xia",
       };
     },
-    props:["info"],
+    props:["info","moduleName","allInfo"],
     methods: {
       iShide() {
         if (this.iSshow) {
@@ -131,7 +137,7 @@
         ]
       }
     },
-    template: `<section class="home_section_box"><category v-for="(p,i) in modules" :key="i" :info="p"></category></section>`,
+    template: `<section class="home_section_box"><category v-for="(p,i) in modules" :key="i" :info="p" :moduleName="p.modulesname" :allInfo="modules"></category></section>`,
     components: {
       category
     }
@@ -166,15 +172,16 @@
       {path: "/productxq",component: productxq},
       {path: "/pagebtn",component: pagebtn},
       {path: "/indexpage",component: indexpage},
-      
+      {path: "/indexpage",component: indexpage},
     ]
   });
   //========
 
   function fun(i) {
     vm._autojump(i)
+    console.log(vm._autojump)
+    console.log(myRouter.routes)
   }
-
   var vm = new Vue({
     router: myRouter,
     el: "#app",
@@ -187,9 +194,10 @@
       },
       backHome() {
         this.$router.push("/")
-      }
+      },
     }
   });
 </script>
 
 </html>
+
