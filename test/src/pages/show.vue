@@ -2,9 +2,9 @@
     <div class="showBox">
       <header-component></header-component>
       <div class="section">
-        <menu-component :menuinfo="menuinfo" :clicks="changeSrc" id="colorBox"></menu-component>
-        <con-component :idxs="ind" :coninfo = "menuinfo"></con-component>
-        <right-component :parentmethods="changeSrc" :idxs="ind" :rightinfo="menuinfo"></right-component>
+        <menu-component id="leftBox" :menuinfo="menuinfo" :clicks="changeSrc"></menu-component>
+        <con-component id="centerBox" :idxs="ind" :coninfo = "menuinfo"></con-component>
+        <right-component id="rightBox" :parentmethods="changeSrc" :idxs="ind" :rightinfo="menuinfo"></right-component>
       </div>
     </div>
 </template>
@@ -35,27 +35,33 @@
       },
       methods:{
           changeSrc(i){
-            console.log($("li a").eq(i))
             this.ind = i
             if(i>0) {
               $("li a").css({"color": ""})
               $("li a").eq(i).css({"color": "red"})
             }
-            console.info(i)
           },
-
+        test(){
+          document.getElementById("rightBox").onclick = function () {
+            alert(1)
+          }
+        },
         toCenter(){
-            $(".rightBox").addEventListener("mousedown",()=>{
-              $(".showBox").css({
+            $("#rightBox")[0].addEventListener("mousedown",()=>{
+              console.log("qiang")
+              $("#rightBox")[0].addEventListener("mousemove",()=>{
+                console.log("qiang")
+              $("#rightBox").css({
                 "position":"relative",
                 "top":"70px",
                 "left":"calc(- (50% - 50px))"
               })
-              $(".conBox").css({
+              $("#centerBox").css({
                 display:"none"
               })
-              $(".leftBox").css({
+              $("#leftBox").css({
                 display:"none"
+              })
               })
             })
         }
@@ -68,6 +74,10 @@
             this.menuinfo = data;
           })
         })
+      },
+      mounted(){
+        // this.toCenter()
+        this.test()
       }
     }
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        h3{
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3 v-bg="'pink'" v-move>aaa</h3>
+        <h3 v-bg="'green'" v-move>ds</h3>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    (function(){
+
+        Vue.directive("bg",(el,binding)=>{
+            console.log(el)
+            console.log(binding)
+            el.style.backgroundColor=binding.value
+        })
+        Vue.directive("move",(el,binding)=>{
+            el.style.position='absolute'
+            el.onmousedown = function(e){
+                let mx = e.clientX - el.offsetLeft
+                let my = e.clientY - el.offsetTop
+
+                document.onmousemove = function (e) {
+                    el.style.left = e.clientX - mx +"px"
+                    el.style.top = e.clientY - my +'px'
+                }
+            }
+            el.onmouseup= function () {
+
+                document.onmousemove = null
+            }
+        })
+        Vue.config.devtools = true
+        new Vue({
+            el:'#app'
+        })
+
+
+    })()
+
+</script>

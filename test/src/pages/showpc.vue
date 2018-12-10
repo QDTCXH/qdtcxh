@@ -13,6 +13,7 @@
     import MenuShowpc from "../components/showpc/MenuShowpc";
     import ConComponent from "../components/ConComponent";
     import RightShowpc from "../components/showpc/RightShowpc";
+    import api01 from "../apis/data01"
     export default {
         name: "showpc",
       components: {RightShowpc, ConComponent, MenuShowpc, HeaderComponent},
@@ -47,11 +48,18 @@
         }
       },
       created(){
+          console.log(api01)
           fetch("/static/datapc.json").then(res=>{
             res.json().then(data=>{
               this.menuinfo = data
             })
           })
+        fetch(api01.api01).then(res=>{
+          // res.json().then(data=>{
+          //   console.log(data)
+          console.log(res)
+          // })
+        })
       }
     }
 </script>
