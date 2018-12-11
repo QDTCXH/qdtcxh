@@ -34,13 +34,7 @@
           }
       },
       methods:{
-          changeSrc(i){
-            this.ind = i
-            if(i>0) {
-              $("li a").css({"color": ""})
-              $("li a").eq(i).css({"color": "red"})
-            }
-          },
+
         test(){
           document.getElementById("rightBox").onclick = function () {
             alert(1)

@@ -51,7 +51,7 @@
     width: 400px;
     height: 780px;
     /*background: #eee;*/
-    background-color: white;
+    background-color: gray;
     display: -webkit-flex;
     flex-direction: column;
     -webkit-align-items: center;

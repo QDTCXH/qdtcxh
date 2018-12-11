@@ -10,15 +10,19 @@
       <ul class="codeShow" >
         <li v-for="(m2,k) in coninfo[idxs].codeShow">{{m2}}</li>
       </ul>
+      <h4>vue组件</h4>
+      <ul class="codeShow2" >
+        <li v-for="(m3,k) in coninfo[idxs].vue">{{m3}}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "ConComponent",
-      props:["coninfo","idxs"]
-    }
+  export default {
+    name: "StudentApiCon",
+    props:["coninfo","idxs"]
+  }
 </script>
 
 <style scoped>

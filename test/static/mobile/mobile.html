@@ -43,7 +43,7 @@
     props: ["module","i","mName","aInfo"],
     methods: {
       jumpPage(n,x) {
-        if(x == "App 页面"){
+        if(x == "示例页面"){
           window.localStorage.name = n + this.aInfo[0].moduless.length;
           window.localStorage.module = x;
           this.$router.push("/" + this.module.path);
@@ -122,7 +122,7 @@
                       ],
               },
               {
-                modulesname:"App 页面",
+                modulesname:"示例页面",
                 moduless:[
                           {path:"dangdangindex",name:"首页"},
                           {path:"searCh",name:"搜索页"},
@@ -130,8 +130,6 @@
                           {path:"dangdangCart",name:"购物车"},
                           {path:"MineBig",name:"个人中心"}, 
                           {path:"productxq",name:"商品详情"},
-                          {path:"indexpage",name:"index"},
-                          
                         ]
               }
         ]

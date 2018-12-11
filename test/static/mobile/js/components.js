@@ -5,7 +5,8 @@ var a1 = Vue.component("a1", {
 /**
  * 倒计时
  */
-var countdown = Vue.component("seckIll", {
+var countdown = Vue.component("seckIll",
+  {
   data() {
     return {
       hour: 2,

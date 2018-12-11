@@ -3,7 +3,8 @@
     <widgets-header></widgets-header>
     <task-list-father></task-list-father>
     <recent-ratings></recent-ratings>
-    <global-map></global-map>
+    <!--<global-map></global-map>-->
+    <index-lineright></index-lineright>
     <rollodex-extend></rollodex-extend>
     <data-history-father></data-history-father>
     <index-lineright></index-lineright>
