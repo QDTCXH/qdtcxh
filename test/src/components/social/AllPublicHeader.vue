@@ -1,12 +1,13 @@
 <template>
     <div class="header">
         <div class="headerTop">
-          <img class="logo" @click="goto('/')" src="/static/img/logo.png" alt="">
+          <img class="logo" @click="goto()" src="/static/img/logo.png" alt="">
           <p class="inputSpan"><i class="iconfont icon-fangdajing"></i><input placeholder="search" type="text" /></p>
           <div class="user">
               <div class="faceBox">
                 <img class="face" :src="userface" alt="">
-                <div class="username">Mr chen</div>
+                <div class="username username1" @click="toLink()">注册</div>
+                <div class="username" @click="toLink()" id="login">登录</div>
               </div>
           </div>
           <div class="shezhi">
@@ -32,7 +33,8 @@
       props:["username","userface","color","nav"],
       data(){
         return{
-          user:"靳迎"
+          user:"靳迎",
+          myTimer:""
         }
       },
       // data(){
@@ -51,40 +53,30 @@
       //     }
       // },
       methods:{
+        goto(){
+          this.$router.push("/")
+    },
+          toLink(){
+            this.$router.push("/register")
+          },
           bgcolor(i){
             return `background:${i}`
           },
           iconfun(i){
             return `iconfont ${i}`
           },
-          goto(i,n){
-            if(i==1){
-              this.$router.push("/"+n)
-              this.user="陈思洋"
-            }else if(i==0){
-              this.$router.push("/"+n)
-              this.user="靳迎"
-              this.username=""
-            } else if(i==2){
-              this.$router.push("/"+n)
-              this.user="李小强"
-            }else if(i==3){
-              this.$router.push("/"+n)
-              this.username="郭倩"
-            } else if(i==4){
-              this.$router.push("/"+n)
-              this.username="陈晓燕"
-            } else if(i==5){
-              this.$router.push("/"+n)
-              this.username="肖雨"
-            }else if(i=="/"){
-              this.$router.push(i)
-            }
-          },
           goto2(i,n){
           this.$router.push("/"+n)
             this.user=this.username[i]
+            },
+        login(){
+            this.myTimer = setInterval(()=>{
+            if(window.localStorage.username){
+              document.querySelector("#login").innerHTML = window.localStorage.username+",欢迎您"
             }
+          },1000)
+
+        }
       },
       mounted() {
         window.addEventListener('scroll',function() {
@@ -96,6 +88,12 @@
             header.style.top = "0px";
           }
         })
+
+
+        this.login()
+      },
+      destroyed(){
+          this.myTimer=null
       }
     }
 </script>
@@ -157,6 +155,10 @@
   }
   .username{
     float: left;
+    cursor: pointer;
+  }
+  .username1{
+    margin-right: 10px;
   }
   .shezhi{
     float: right;

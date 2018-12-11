@@ -6,17 +6,39 @@
     </ul>
   </div>
 </template>
-
 <script>
     export default {
         name: "MenuComponent",
       props:["menuinfo","clicks"],
+      data(){
+        return {
+          myTime:null
+        }
+      },
       methods:{
           fun1(p,idx){
-            console.log(showiframe.window.fun)
+            this.myTime=null
+            localStorage.clear()
             showiframe.window.fun(p)
             this.clicks(idx)
-          }
+          },
+          mobileToPc(){
+
+            this.myTime = setInterval(()=>{
+              if(window.localStorage.name){
+                this.clicks(window.localStorage.name)}
+            },200)
+        }
+      },
+      mounted(){
+
+      },
+      created(){
+        this.mobileToPc()
+      },
+      destroyed(){
+          this.myTime=null
+          localStorage.clear()
       }
     }
 </script>

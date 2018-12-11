@@ -2,7 +2,7 @@
   <div class="boxWrap">
     <div class="topBox">
       <header-component></header-component>
-      <div class="text">拥抱世界,面向未来</div>
+      <div class="text">一款主打轻量、便捷、复用的新型前端框架</div>
     </div>
     <div class="bottomBox">
       <div class="minBox">

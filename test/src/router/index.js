@@ -9,6 +9,8 @@ import Filters from '../pages/Filters'
 import Components from '../pages/ComPage'
 import home from "../pages/home"
 import widgets from "../pages/widgets"
+import register from "../pages/Register"
+import studentApi from "../pages/StudentApi"
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +32,8 @@ export default new Router({
     {path:'/filters',component:Filters},
     {path:'/components',component:Components},
     {path:'/home',component:home},
-    {path:'/widgets',component:widgets}
+    {path:'/widgets',component:widgets},
+    {path:'/register',component:register},
+    {path:'/studentApi',component:studentApi},
   ]
 })

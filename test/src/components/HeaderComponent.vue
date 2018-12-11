@@ -6,8 +6,17 @@
     <span class="nav orginNav" >文档
       <ul>
           <li @click="goto('show')">webapp</li>
-          <li @click="goto('showpc')">后台</li>
-          <li @click="goto('home')">案例</li>
+          <li @click="goto('showpc')">pc</li>
+          <li @click="goto('home')">后台</li>
+          <li><a class="tools" href="http://localhost:8082" target="_blank">项目</a></li>
+      </ul>
+    </span>
+
+    <span class="nav orginNav">学习
+      <ul>
+          <li @click="goto('studentApi')">Api</li>
+           <li><a class="tools" href="https://cn.vuejs.org" target="_blank">工具</a></li>
+            <li><a class="tools" href="https://github.com/QDTCXH/qdtcxh" target="_blank">github</a></li>
       </ul>
     </span>
   </div>
@@ -26,6 +35,8 @@
               this.$router.push('/showpc')
             }else if(i=='home'){
               this.$router.push('/home')
+            }else if(i=='studentApi'){
+              this.$router.push('/studentApi')
             }
           }
         }
@@ -80,5 +91,8 @@
   }
   .header .orginNav:hover ul{
     display: block;
+  }
+  .tools{
+    color: black;
   }
 </style>

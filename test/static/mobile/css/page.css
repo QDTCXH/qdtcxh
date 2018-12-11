@@ -5,7 +5,14 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+
     background-color: #eaeff5;
+}
+.boxwrap::-webkit-scrollbar{
+  width: 0;
+}
+.boxwrap::-webkit-scrollbar{
+  display: none;
 }
 .dd_ind_header{
     display: flex;

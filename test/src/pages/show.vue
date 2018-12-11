@@ -2,14 +2,15 @@
     <div class="showBox">
       <header-component></header-component>
       <div class="section">
-        <menu-component :menuinfo="menuinfo" :clicks="changeSrc"></menu-component>
-        <con-component :idxs="ind" :coninfo = "menuinfo"></con-component>
-        <right-component :parentmethods="changeSrc" :idxs="ind" :rightinfo="menuinfo"></right-component>
+        <menu-component id="leftBox" :menuinfo="menuinfo" :clicks="changeSrc"></menu-component>
+        <con-component id="centerBox" :idxs="ind" :coninfo = "menuinfo"></con-component>
+        <right-component id="rightBox" :parentmethods="changeSrc" :idxs="ind" :rightinfo="menuinfo"></right-component>
       </div>
     </div>
 </template>
 
 <script>
+   import $ from "jquery"
     import HeaderComponent from "../components/HeaderComponent";
     import MenuComponent from "../components/MenuComponent";
     import ConComponent from "../components/ConComponent";
@@ -33,10 +34,32 @@
           }
       },
       methods:{
-          changeSrc(i){
-            this.ind = i
-            console.info(i)
+
+        test(){
+          document.getElementById("rightBox").onclick = function () {
+            alert(1)
           }
+        },
+        toCenter(){
+            $("#rightBox")[0].addEventListener("mousedown",()=>{
+              console.log("qiang")
+              $("#rightBox")[0].addEventListener("mousemove",()=>{
+                console.log("qiang")
+              $("#rightBox").css({
+                "position":"relative",
+                "top":"70px",
+                "left":"calc(- (50% - 50px))"
+              })
+              $("#centerBox").css({
+                display:"none"
+              })
+              $("#leftBox").css({
+                display:"none"
+              })
+              })
+            })
+        }
+
       },
       created(){
         fetch("/static/data.json").then(res=>{
@@ -45,6 +68,10 @@
             this.menuinfo = data;
           })
         })
+      },
+      mounted(){
+        // this.toCenter()
+        this.test()
       }
     }
 

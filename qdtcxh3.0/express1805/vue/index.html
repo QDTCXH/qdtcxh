@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background-color: yellow;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .info{
+            display: flex;
+            border-bottom:1px solid gray;
+        }
+        .imgs{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #666666;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .detail{
+            flex: 1;
+        }
+        input{
+            width: 50px;
+        }
+        button{
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <header>商品数量：{{total}} 总金额：{{money}}</header>
+    <div class="info" v-for="(p,index) in products">
+        <div class="imgs f"><img :src="p.pic" alt=""></div>
+        <div class="detail f">
+            <h3>{{p.title}}</h3>
+            <h3>单价:{{p.price}}</h3>
+            <button @click="min(p)">-</button>
+            <input type="number" min="1" v-model.number="p.qal">
+            <button @click="p.qal+=1">+</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="liv/vue.js"></script>
+
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            products:[],
+        },
+        created(){
+            fetch("http://127.0.0.1:3000/a/api")
+                .then(res => res.json())
+                .then(json => {
+                    this.products = json
+                })
+        },
+        methods:{
+                min(p){
+                    if(p.qal<=1){
+                        p.qal=1
+                    }else{
+                        p.qal--
+                    }
+                }
+        },
+        computed:{
+            total(){
+                return this.products.reduce((sum,product)=>{
+                   return sum+product.qal
+                },0)
+            },
+            money(){
+                return this.products.reduce((sum,product)=>{
+                    return sum+product.qal*product.price
+                },0)
+            }
+        },
+    })
+</script>
